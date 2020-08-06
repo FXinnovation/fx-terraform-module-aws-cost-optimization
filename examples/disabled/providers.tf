@@ -6,6 +6,6 @@ provider "aws" {
 
   assume_role {
     role_arn     = "arn:aws:iam::700633540182:role/Jenkins"
-    session_name = "jenkins-cascades-bo-ds"
+    session_name = "tftest"
   }
 }

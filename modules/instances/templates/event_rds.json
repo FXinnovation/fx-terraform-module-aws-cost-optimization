@@ -1,0 +1,24 @@
+{
+  "source": [
+    "aws.rds"
+  ],
+  "detail-type": [
+    "RDS DB Instance Event",
+    "RDS DB Cluster Event"
+  ],
+
+  "Message": [
+    "The DB instance has been started.",
+    "The DB cluster started.",
+  ],
+
+  "SourceIdentifier" : [
+    "${instances_ids}"
+  ],
+
+  "detail": {
+    "EventCategories": [
+      "notification",
+    ]
+  }
+}

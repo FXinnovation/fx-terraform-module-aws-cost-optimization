@@ -33,7 +33,59 @@ For example, if optimization is on, someone tried to start an instances, disable
 
 
 <!-- BEGINNING OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
-Error: no lines in file
+## Requirements
+
+| Name | Version |
+|------|---------|
+| terraform | >= 0.12.29 |
+| aws | ~>2.58 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| aws | ~>2.58 |
+| external | n/a |
+
+## Inputs
+
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| cloudwatch\_event\_rule\_ec2\_instance\_maintain\_stop\_name | Name of the CloudWatch Rule that will assure that the cost-optimized EC2 instances stays stopped. | `string` | `"FXCostOptimizerEC2MaintainStopRule"` | no |
+| cloudwatch\_event\_rule\_rds\_instance\_maintain\_stop\_name | Name of the CloudWatch Rule that will assure that the cost-optimized RDS instances stays stopped. | `string` | `"FXCostOptimizerRDSMaintainStopRule"` | no |
+| cloudwatch\_tags | Tags to be shared among all the CloudWatch resources created by the module. Will be merged with var.tags. | `map` | `{}` | no |
+| ec2\_instances\_cloudwatch\_event\_iam\_policy\_name | Name of the IAM Policy to create to trigger actions on the EC2 instances by CloudWatch events. | `string` | `"FXCostOptimizerEC2InstanceActionsForCloudWatchEventsPolicy"` | no |
+| ec2\_instances\_cloudwatch\_event\_iam\_role\_name | Name of the IAM Role to allow CloudWatch Events to trigger SSM Automation actions on the EC2 instances. | `string` | `"FXCostOptimizerEC2InstanceActionsForCloudWatchEventsRole"` | no |
+| ec2\_instances\_count | How many EC2 instances to act upon. Cannot compute automatically in Terraform 0.12. | `number` | `0` | no |
+| ec2\_instances\_ids | IDs of the EC2 instances to act upon. | `list` | `[]` | no |
+| ec2\_instances\_ssm\_automation\_iam\_policy\_name | Name of the IAM Policy to allow to stop EC2 instances from CloudWatch trigger. | `string` | `"FXCostOptimizerEC2InstanceActionsForSSMAutomationPolicy"` | no |
+| ec2\_instances\_ssm\_automation\_iam\_role\_name | Name of the IAM Role to create to allow actions on the EC2 instances by SSM Automation. | `string` | `"FXCostOptimizerEC2InstanceActionsForSSMAutomationRole"` | no |
+| enabled | Whether or not to enable this entire module or not | `bool` | `true` | no |
+| iam\_role\_tags | Tags to be shared among all the IAM Role created by the module. Will be merged with var.tags. | `map` | `{}` | no |
+| name | Name that represent the workload or component name that will be cost-optimized. | `string` | `""` | no |
+| prefix | Prefix to use for all the named resources of the module. Mainly use for testing purpose. | `string` | `""` | no |
+| rds\_instances\_cloudwatch\_event\_iam\_policy\_name | Name of the IAM Policy to create to trigger actions on the RDS instances by CloudWatch events. | `string` | `"FXCostOptimizerRDSInstanceActionsForCloudWatchEventsPolicy"` | no |
+| rds\_instances\_cloudwatch\_event\_iam\_role\_name | Name of the IAM Role to allow CloudWatch Events to trigger SSM Automation actions on the RDS instances. | `string` | `"FXCostOptimizerRDSInstanceActionsForCloudWatchEventsRole"` | no |
+| rds\_instances\_count | How many RDS instances to act upon. Cannot compute automatically in Terraform 0.12. | `number` | `0` | no |
+| rds\_instances\_ids | IDs of the RDS instances to act upon. | `list` | `[]` | no |
+| rds\_instances\_ssm\_automation\_iam\_policy\_name | Name of the IAM Policy to allow to stop RDS instances from CloudWatch trigger. | `string` | `"FXCostOptimizerRDSInstanceActionsForSSMAutomationPolicy"` | no |
+| rds\_instances\_ssm\_automation\_iam\_role\_name | Name of the IAM Role to create to allow actions on the RDS instances by SSM Automation. | `string` | `"FXCostOptimizerRDSInstanceActionsForSSMAutomationRole"` | no |
+| ssm\_association\_ec2\_instances\_start | Name of the SSM Association to wake up the EC2 instance | `string` | `"FXCostOptimizerEC2Start"` | no |
+| ssm\_association\_ec2\_instances\_stop | Name of the SSM Association to shut down the EC2 instance | `string` | `"FXCostOptimizerEC2Stop"` | no |
+| ssm\_association\_rds\_instances\_start | Name of the SSM Association to wake up the RDS instance | `string` | `"FXCostOptimizerRDSStart"` | no |
+| ssm\_association\_rds\_instances\_stop | Name of the SSM Association to shut down the RDS instance | `string` | `"FXCostOptimizerRDSStop"` | no |
+| ssm\_parameter\_tags | Tags to be shared among all the SSM Parameters created by the module. Will be merged with var.tags. | `map` | `{}` | no |
+| ssm\_parameter\_toggle\_read\_only\_policy\_name | Name of the policy that allows RO access to the toggle SSM Parameter. | `string` | `"FXCostOptimizerSSMParameterReadOnlyPolicy"` | no |
+| ssm\_parameter\_toggle\_read\_write\_policy\_name | Name of the policy that allows RW access to the toggle SSM Parameter. | `string` | `"FXCostOptimizerSSMParameterReadWritePolicy"` | no |
+| tags | Tags to be shared among all resources of the module. | `map` | `{}` | no |
+| vpc\_id | ID of the VPC where to deploy this module. | `map` | `{}` | no |
+
+## Outputs
+
+| Name | Description |
+|------|-------------|
+| cost\_optimization\_enabled | n/a |
+
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->
 
 ## Versioning

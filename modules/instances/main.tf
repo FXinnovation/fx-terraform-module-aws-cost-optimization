@@ -95,7 +95,7 @@ data "aws_iam_policy_document" "this_ssm_automation_iam_policy1" {
       "ec2:RebootInstances",
       "ec2:StartInstances",
       "ec2:StopInstances",
-    ] : [
+      ] : [
       format("%s:Describe*", lower(var.type)),
       "rds:RebootDBInstance",
       "rds:StartDBInstance",

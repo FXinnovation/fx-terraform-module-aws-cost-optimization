@@ -107,10 +107,3 @@ module "ssm_parameters_cost_optimization" {
     local.tags,
   )
 }
-
-
-
-
-
-
-

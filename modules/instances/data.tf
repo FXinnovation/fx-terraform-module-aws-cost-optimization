@@ -44,7 +44,7 @@ data "aws_iam_policy_document" "events_assume_role" {
 ####
 
 data "aws_ssm_document" "this_maintain_stop" {
-  count = local.enabled&& var.enable_cost_optimization ? 1 : 0
+  count = local.enabled && var.enable_cost_optimization ? 1 : 0
 
   name             = format("AWS-Stop%sInstance", local.ssm_document_type_name)
   document_format  = "YAML"

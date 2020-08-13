@@ -4,7 +4,8 @@ locals {
     managed-by = "Terraform"
   }
 
-  enable_cost_optimization = data.aws_ssm_parameter.toggle.*.value[0] == "true" || data.aws_ssm_parameter.toggle.*.value[0] == "True" || data.aws_ssm_parameter.toggle.*.value[0] == 1 || data.aws_ssm_parameter.toggle.*.value[0] == true || false
+  cost_optimization_parameter_value = element(concat(data.aws_ssm_parameter.toggle.*.value, [""]), 0)
+  enable_cost_optimization          = local.cost_optimization_parameter_value == "true" || local.cost_optimization_parameter_value == "True" || local.cost_optimization_parameter_value == 1 || local.cost_optimization_parameter_value == true || false
 }
 
 #####

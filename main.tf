@@ -78,6 +78,8 @@ module "rds_instances" {
 module "ssm_parameters_cost_optimization" {
   source = "git::https://scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/terraform-module-aws-ssm-parameters.git?ref=2.0.1"
 
+  enabled = var.enabled
+
   parameters_count = 1
   prefix           = format("%s%s", "FXCostOptimizer", var.prefix)
   names = [

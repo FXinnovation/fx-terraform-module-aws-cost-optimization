@@ -21,7 +21,7 @@ variable "name" {
 
 variable "vpc_id" {
   description = "ID of the VPC where to deploy this module."
-  default     = {}
+  default     = ""
 }
 
 variable "prefix" {

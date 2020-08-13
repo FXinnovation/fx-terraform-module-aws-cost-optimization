@@ -78,7 +78,7 @@ For example, if optimization is on, someone tried to start an instances, disable
 | ssm\_parameter\_toggle\_read\_only\_policy\_name | Name of the policy that allows RO access to the toggle SSM Parameter. | `string` | `"FXCostOptimizerSSMParameterReadOnlyPolicy"` | no |
 | ssm\_parameter\_toggle\_read\_write\_policy\_name | Name of the policy that allows RW access to the toggle SSM Parameter. | `string` | `"FXCostOptimizerSSMParameterReadWritePolicy"` | no |
 | tags | Tags to be shared among all resources of the module. | `map` | `{}` | no |
-| vpc\_id | ID of the VPC where to deploy this module. | `map` | `{}` | no |
+| vpc\_id | ID of the VPC where to deploy this module. | `string` | `""` | no |
 
 ## Outputs
 

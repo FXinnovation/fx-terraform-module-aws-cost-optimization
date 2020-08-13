@@ -25,7 +25,7 @@ By using this module, you can optimize the cost of an AWS infrastructure by:
 
 ## Limitations
 
-- This modules calls a bash script that calls `terraform` itself and bash. Make sure `bash` is installed and that both software are correctly set in your OS environment paths.
+- This modules calls a shell script that calls `terraform` itself. Make sure `sh` is installed and that both software are correctly set in your OS environment paths.
 For more information on this limitation, see `data.tf`.
 - AWS itself has [some limitations to stop RDS instances](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_StopInstance.html#USER_StopInstance.Limitations).
 - Because this module  with AWS lifecycle, it’s possible that an instances end up in an unwanted state.

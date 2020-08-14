@@ -11,11 +11,6 @@ variable "enabled" {
 variable "type" {
   description = "What kind of instances to setup. \"RDS\" or \"EC2\"."
   type        = string
-
-  //  validation {
-  //    condition     = var.type == "RDS" || var.type == "EC2"
-  //    error_message = "The variable “var.type” must be either \"RDS\" or \"EC2\"."
-  //  }
 }
 
 variable "enable_cost_optimization" {

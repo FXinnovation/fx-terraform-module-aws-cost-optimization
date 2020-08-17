@@ -27,6 +27,7 @@ By using this module, you can optimize the cost of an AWS infrastructure by:
 
 - This modules calls a shell script that calls `terraform` itself. Make sure `sh` is installed and that both software are correctly set in your OS environment paths.
 For more information on this limitation, see `data.tf`.
+- It’s not yet possible to use or import and external SSM Parameter to controle cost optimization.
 - AWS itself has [some limitations to stop RDS instances](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/USER_StopInstance.html#USER_StopInstance.Limitations).
 - Because this module  with AWS lifecycle, it’s possible that an instances end up in an unwanted state.
 For example, if optimization is on, someone tried to start an instances, disable optimization and run Terraform, the instance might still be in "Stopping" state, resulting in a "Stopped" state instead of the expected "Running" state.

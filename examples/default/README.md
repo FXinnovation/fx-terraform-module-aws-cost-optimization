@@ -13,14 +13,14 @@
 | Name | Version |
 |------|---------|
 | terraform | >= 0.12.29 |
-| aws | ~> 2 |
+| aws | ~> 3 |
 | aws | ~>2.58 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | ~> 2 ~>2.58 |
+| aws | ~> 3 ~>2.58 |
 | random | n/a |
 
 ## Inputs

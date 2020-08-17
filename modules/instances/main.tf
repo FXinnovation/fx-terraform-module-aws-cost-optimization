@@ -6,7 +6,7 @@ locals {
     managed-by = "Terraform"
   }
 
-  ssm_document_type_name = var.type == "EC2" ? var.type : title(lower(var.type))
+  ssm_document_type_partial_name = var.type == "EC2" ? var.type : title(lower(var.type))
 }
 
 ####
@@ -68,7 +68,7 @@ resource "aws_iam_role" "this_ssm_automation_iam_role" {
   )
 }
 
-data "aws_iam_policy_document" "this_ssm_automation_iam_policy1" {
+data "aws_iam_policy_document" "this_ssm_automation_iam_policy" {
   count = local.enabled ? 1 : 0
 
   statement {
@@ -110,22 +110,22 @@ data "aws_iam_policy_document" "this_ssm_automation_iam_policy1" {
   }
 }
 
-resource "aws_iam_policy" "this_ssm_automation_iam_policy1" {
+resource "aws_iam_policy" "this_ssm_automation_iam_policy" {
   count = local.enabled ? 1 : 0
 
   name        = format("%s%s", var.prefix, var.instances_ssm_automation_iam_policy_name)
   path        = "/"
   description = "Allows SSM Automation to stop ${var.type} instances and describe CloudWatch resources."
 
-  policy = data.aws_iam_policy_document.this_ssm_automation_iam_policy1.*.json[0]
+  policy = data.aws_iam_policy_document.this_ssm_automation_iam_policy.*.json[0]
 }
 
 
-resource "aws_iam_role_policy_attachment" "this_ssm_automation_iam_policy1" {
+resource "aws_iam_role_policy_attachment" "this_ssm_automation_iam_policy" {
   count = local.enabled ? 1 : 0
 
   role       = aws_iam_role.this_ssm_automation_iam_role.*.id[0]
-  policy_arn = aws_iam_policy.this_ssm_automation_iam_policy1.*.arn[0]
+  policy_arn = aws_iam_policy.this_ssm_automation_iam_policy.*.arn[0]
 }
 
 
@@ -148,7 +148,7 @@ resource "aws_iam_role" "this_cloudwatch_event_iam_role" {
   )
 }
 
-data "aws_iam_policy_document" "this_cloudwatch_event_iam_policy1" {
+data "aws_iam_policy_document" "this_cloudwatch_event_iam_policy" {
   count = local.enabled && var.enable_cost_optimization ? 1 : 0
 
   statement {
@@ -188,21 +188,21 @@ data "aws_iam_policy_document" "this_cloudwatch_event_iam_policy1" {
   }
 }
 
-resource "aws_iam_policy" "this_cloudwatch_event_iam_policy1" {
+resource "aws_iam_policy" "this_cloudwatch_event_iam_policy" {
   count = local.enabled && var.enable_cost_optimization ? 1 : 0
 
   name        = format("%s%s", var.prefix, var.instances_cloudwatch_event_iam_policy_name)
   path        = "/"
   description = "Allows CloudWatch Events to perform actions on the ${var.name} ${var.type} instances via CloudWatch triggers."
 
-  policy = data.aws_iam_policy_document.this_cloudwatch_event_iam_policy1.*.json[0]
+  policy = data.aws_iam_policy_document.this_cloudwatch_event_iam_policy.*.json[0]
 }
 
-resource "aws_iam_role_policy_attachment" "this_cloudwatch_event_iam_policy1" {
+resource "aws_iam_role_policy_attachment" "this_cloudwatch_event_iam_policy" {
   count = local.enabled && var.enable_cost_optimization ? 1 : 0
 
   role       = aws_iam_role.this_cloudwatch_event_iam_role.*.id[0]
-  policy_arn = aws_iam_policy.this_cloudwatch_event_iam_policy1.*.arn[0]
+  policy_arn = aws_iam_policy.this_cloudwatch_event_iam_policy.*.arn[0]
 }
 
 ####
@@ -212,7 +212,7 @@ resource "aws_iam_role_policy_attachment" "this_cloudwatch_event_iam_policy1" {
 resource "aws_ssm_association" "this" {
   count = local.enabled ? var.instances_count : 0
 
-  name = var.enable_cost_optimization ? format("AWS-Stop%sInstance", local.ssm_document_type_name) : format("AWS-Start%sInstance", local.ssm_document_type_name)
+  name = var.enable_cost_optimization ? format("AWS-Stop%sInstance", local.ssm_document_type_partial_name) : format("AWS-Start%sInstance", local.ssm_document_type_partial_name)
   association_name = format(
     "%s%s",
     var.prefix,

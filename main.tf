@@ -5,7 +5,7 @@ locals {
   }
 
   cost_optimization_parameter_value = element(concat(data.aws_ssm_parameter.toggle.*.value, [""]), 0)
-  enable_cost_optimization          = local.cost_optimization_parameter_value == "true" || local.cost_optimization_parameter_value == "True" || local.cost_optimization_parameter_value == 1 || local.cost_optimization_parameter_value == true
+  enable_cost_optimization          = lower(local.cost_optimization_parameter_value) == "true" || local.cost_optimization_parameter_value == 1
 }
 
 #####

@@ -39,14 +39,14 @@ For example, if optimization is on, someone tried to start an instances, disable
 | Name | Version |
 |------|---------|
 | terraform | >= 0.12.29 |
-| aws | ~> 2.58, ~> 3.0 |
+| aws | >= 2.58, ~> 3.0 |
 | external | ~> 1.2 |
 
 ## Providers
 
 | Name | Version |
 |------|---------|
-| aws | ~> 2.58, ~> 3.0 |
+| aws | >= 2.58, ~> 3.0 |
 | external | ~> 1.2 |
 
 ## Inputs

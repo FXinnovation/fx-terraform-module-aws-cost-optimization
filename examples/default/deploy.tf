@@ -43,10 +43,19 @@ resource "aws_db_instance" "example" {
   skip_final_snapshot  = true
 }
 
+#####
+# Example
+# Shows how to:
+# - cost optimize EC2 instances
+# - cost optimize RDS instance
+#####
+
 module "example" {
   source = "../.."
 
   prefix = random_string.this.result
+
+  current_module_name = "example"
 
   name   = "tftest"
   vpc_id = data.aws_vpc.example.id
@@ -56,6 +65,27 @@ module "example" {
 
   rds_instances_count = 1
   rds_instances_ids   = aws_db_instance.example.*.id
+
+  tags = {
+    tftest = true
+  }
+}
+
+#####
+# Example 2
+# Shows how to:
+# - call the module a second time, to make sure cost optimization can be called multiple times
+#####
+
+module "example2" {
+  source = "../.."
+
+  prefix = random_string.this.result
+
+  current_module_name = "example2"
+
+  name   = "tftest2"
+  vpc_id = data.aws_vpc.example.id
 
   tags = {
     tftest = true

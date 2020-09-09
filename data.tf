@@ -12,7 +12,7 @@
 data "external" "this" {
   count = var.enabled ? 1 : 0
 
-  program = ["sh", "-c", "terraform show | grep -q 'module.ssm_parameters_cost_optimization' && echo '{\"ssm\": \"exist\"}' || echo '{\"ssm\": \"notexist\"}'"]
+  program = ["sh", "-c", "terraform show | grep -q 'module.${var.current_module_name}.module.ssm_parameters_cost_optimization' && echo '{\"ssm\": \"exist\"}' || echo '{\"ssm\": \"notexist\"}'"]
 }
 
 data "aws_ssm_parameter" "toggle" {

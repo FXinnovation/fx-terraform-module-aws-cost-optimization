@@ -14,6 +14,11 @@ variable "tags" {
   default     = {}
 }
 
+variable "current_module_name" {
+  description = "The exact name of the cost optimization module called in your module. See example."
+  default     = ""
+}
+
 variable "name" {
   description = "Name that represent the workload or component name that will be cost-optimized."
   default     = ""

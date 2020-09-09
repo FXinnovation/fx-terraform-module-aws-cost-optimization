@@ -1,3 +1,9 @@
+0.1.1
+=====
+
+* fix: makes sure the module can be called multiple times
+* maintenance: bumps pre-commit deps
+
 0.1.0
 =====
 

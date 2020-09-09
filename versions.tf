@@ -4,5 +4,6 @@ terraform {
   required_providers {
     aws      = ">= 2.58, < 4"
     external = "~> 1.2"
+    null     = "~> 2.1"
   }
 }

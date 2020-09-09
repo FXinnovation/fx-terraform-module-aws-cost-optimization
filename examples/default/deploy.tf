@@ -55,8 +55,6 @@ module "example" {
 
   prefix = random_string.this.result
 
-  current_module_name = "example"
-
   name   = "tftest"
   vpc_id = data.aws_vpc.example.id
 
@@ -81,8 +79,6 @@ module "example2" {
   source = "../.."
 
   prefix = random_string.this.result
-
-  current_module_name = "example2"
 
   name   = "tftest2"
   vpc_id = data.aws_vpc.example.id

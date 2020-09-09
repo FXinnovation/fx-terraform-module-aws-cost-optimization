@@ -41,6 +41,7 @@ For example, if optimization is on, someone tried to start an instances, disable
 | terraform | >= 0.12.29 |
 | aws | >= 2.58, < 4 |
 | external | ~> 1.2 |
+| null | ~> 2.1 |
 
 ## Providers
 
@@ -48,6 +49,7 @@ For example, if optimization is on, someone tried to start an instances, disable
 |------|---------|
 | aws | >= 2.58, < 4 |
 | external | ~> 1.2 |
+| null | ~> 2.1 |
 
 ## Inputs
 
@@ -56,7 +58,6 @@ For example, if optimization is on, someone tried to start an instances, disable
 | cloudwatch\_event\_rule\_ec2\_instance\_maintain\_stop\_name | Name of the CloudWatch Rule that will assure that the cost-optimized EC2 instances stays stopped. | `string` | `"FXCostOptimizerEC2MaintainStopRule"` | no |
 | cloudwatch\_event\_rule\_rds\_instance\_maintain\_stop\_name | Name of the CloudWatch Rule that will assure that the cost-optimized RDS instances stays stopped. | `string` | `"FXCostOptimizerRDSMaintainStopRule"` | no |
 | cloudwatch\_tags | Tags to be shared among all the CloudWatch resources created by the module. Will be merged with var.tags. | `map` | `{}` | no |
-| current\_module\_name | The exact name of the cost optimization module called in your module. See example. | `string` | `""` | no |
 | ec2\_instances\_cloudwatch\_event\_iam\_policy\_name | Name of the IAM Policy to create to trigger actions on the EC2 instances by CloudWatch events. | `string` | `"FXCostOptimizerEC2InstanceActionsForCloudWatchEventsPolicy"` | no |
 | ec2\_instances\_cloudwatch\_event\_iam\_role\_name | Name of the IAM Role to allow CloudWatch Events to trigger SSM Automation actions on the EC2 instances. | `string` | `"FXCostOptimizerEC2InstanceActionsForCloudWatchEventsRole"` | no |
 | ec2\_instances\_count | How many EC2 instances to act upon. Cannot compute automatically in Terraform 0.12. | `number` | `0` | no |

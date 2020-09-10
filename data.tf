@@ -12,11 +12,13 @@
 data "external" "this" {
   count = var.enabled ? 1 : 0
 
-  program = ["sh", "-c", "terraform show | grep '${data.null_data_source.ssm_parameters_cost_optimization.random}' && echo '{\"ssm\": \"exist\"}' || echo '{\"ssm\": \"notexist\"}'"]
+  program = ["sh", "-c", "terraform show | grep '${data.null_data_source.ssm_parameters_cost_optimization.*.random[0]}' && echo '{\"ssm\": \"exist\"}' || echo '{\"ssm\": \"notexist\"}'"]
 }
 
 // This is used just for the random value it generate, allowing to call this module at different times, multiple times in a deployent
-data "null_data_source" "ssm_parameters_cost_optimization" {}
+data "null_data_source" "ssm_parameters_cost_optimization" {
+  count = var.enabled ? 1 : 0
+}
 
 data "aws_ssm_parameter" "toggle" {
   count = var.enabled ? 1 : 0

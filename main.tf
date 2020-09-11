@@ -83,7 +83,7 @@ module "ssm_parameters_cost_optimization" {
   parameters_count = 1
   prefix           = format("%s%s", "FXCostOptimizer", var.prefix)
   names = [
-    "/${var.name}/enable",
+    "/${replace(var.name, " ", "")}/enable",
   ]
   types = [
     "String",

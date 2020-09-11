@@ -1,3 +1,8 @@
+0.1.2
+=====
+
+* fix: allow to use name with spaces and still works
+
 0.1.1
 =====
 

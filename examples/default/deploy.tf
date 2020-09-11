@@ -80,7 +80,7 @@ module "example2" {
 
   prefix = random_string.this.result
 
-  name   = "tftest2"
+  name   = "tftest 2"
   vpc_id = data.aws_vpc.example.id
 
   tags = {

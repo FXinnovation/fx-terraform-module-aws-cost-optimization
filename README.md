@@ -66,6 +66,7 @@ For example, if optimization is on, someone tried to start an instances, disable
 | ec2\_instances\_ssm\_automation\_iam\_role\_name | Name of the IAM Role to create to allow actions on the EC2 instances by SSM Automation. | `string` | `"FXCostOptimizerEC2InstanceActionsForSSMAutomationRole"` | no |
 | enabled | Whether or not to enable this entire module or not | `bool` | `true` | no |
 | iam\_role\_tags | Tags to be shared among all the IAM Role created by the module. Will be merged with var.tags. | `map` | `{}` | no |
+| manual\_random\_value | A random value that must be unique, manually provided (no build-in function can be used) and with a minimum length of 10. | `string` | n/a | yes |
 | name | Name that represent the workload or component name that will be cost-optimized. | `string` | `""` | no |
 | prefix | Prefix to use for all the named resources of the module. Mainly use for testing purpose. | `string` | `""` | no |
 | rds\_instances\_cloudwatch\_event\_iam\_policy\_name | Name of the IAM Policy to create to trigger actions on the RDS instances by CloudWatch events. | `string` | `"FXCostOptimizerRDSInstanceActionsForCloudWatchEventsPolicy"` | no |

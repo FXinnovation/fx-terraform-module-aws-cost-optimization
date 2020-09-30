@@ -35,5 +35,6 @@
 | Name | Description |
 |------|-------------|
 | test | n/a |
+| test22 | n/a |
 
 <!-- END OF PRE-COMMIT-TERRAFORM DOCS HOOK -->

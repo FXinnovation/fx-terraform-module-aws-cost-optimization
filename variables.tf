@@ -29,6 +29,11 @@ variable "prefix" {
   default     = ""
 }
 
+variable "manual_random_value" {
+  description = "A random value that must be unique, manually provided (no build-in function can be used) and with a minimum length of 10."
+  type        = string
+}
+
 ####
 # IAM Role
 ####

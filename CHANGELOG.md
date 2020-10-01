@@ -1,3 +1,9 @@
+0.1.3
+=====
+
+* fix: Wrong idempotency with null datasource for SSM parameter creation
+* fix: wrong SSM parameter name in datasource call (name still keep its spaces)
+
 0.1.2
 =====
 

@@ -53,6 +53,8 @@ resource "aws_db_instance" "example" {
 module "example" {
   source = "../.."
 
+  manual_random_value = "dflkxzjidsgfdje34ckv"
+
   prefix = random_string.this.result
 
   name   = "tftest"
@@ -63,6 +65,7 @@ module "example" {
 
   rds_instances_count = 1
   rds_instances_ids   = aws_db_instance.example.*.id
+
 
   tags = {
     tftest = true
@@ -77,6 +80,8 @@ module "example" {
 
 module "example2" {
   source = "../.."
+
+  manual_random_value = "cvblkxlks8x34ipozx12"
 
   prefix = random_string.this.result
 

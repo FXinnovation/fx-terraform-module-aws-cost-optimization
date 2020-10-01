@@ -12,16 +12,19 @@
 data "external" "this" {
   count = var.enabled ? 1 : 0
 
-  program = ["sh", "-c", "terraform show | grep '${data.null_data_source.ssm_parameters_cost_optimization.*.random[0]}' && echo '{\"ssm\": \"exist\"}' || echo '{\"ssm\": \"notexist\"}'"]
+  program = ["sh", "-c", "terraform show | grep -q '\"fx_innovation_cost_opti_random_datasource\" = \"${var.manual_random_value}\"' && echo '{\"ssm\": \"exist\"}' || echo '{\"ssm\": \"notexist\"}'"]
 }
 
-// This is used just for the random value it generate, allowing to call this module at different times, multiple times in a deployent
-data "null_data_source" "ssm_parameters_cost_optimization" {
+data "null_data_source" "this" {
   count = var.enabled ? 1 : 0
+
+  inputs = {
+    fx_innovation_cost_opti_random_datasource = var.manual_random_value
+  }
 }
 
 data "aws_ssm_parameter" "toggle" {
   count = var.enabled ? 1 : 0
 
-  name = data.external.this.*.result[0].ssm == "exist" ? "/${format("%s%s", "FXCostOptimizer", var.prefix)}/${var.name}/enable" : "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
+  name = data.external.this.0.result.ssm == "exist" ? "/${format("%s%s", "FXCostOptimizer", var.prefix)}/${local.name_without_spaces}/enable" : "/aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2"
 }

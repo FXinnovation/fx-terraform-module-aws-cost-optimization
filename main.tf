@@ -6,6 +6,8 @@ locals {
 
   cost_optimization_parameter_value = var.enabled ? element(concat(data.aws_ssm_parameter.toggle.*.value, [false]), 0) : false
   enable_cost_optimization          = lower(local.cost_optimization_parameter_value) == "true" || local.cost_optimization_parameter_value == 1
+
+  name_without_spaces = replace(var.name, " ", "")
 }
 
 #####
@@ -83,7 +85,7 @@ module "ssm_parameters_cost_optimization" {
   parameters_count = 1
   prefix           = format("%s%s", "FXCostOptimizer", var.prefix)
   names = [
-    "/${replace(var.name, " ", "")}/enable",
+    "/${local.name_without_spaces}/enable",
   ]
   types = [
     "String",

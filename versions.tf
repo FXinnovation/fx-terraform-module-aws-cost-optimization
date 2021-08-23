@@ -1,9 +1,9 @@
 terraform {
-  required_version = ">= 0.12.29"
+  required_version = ">= 0.14"
 
   required_providers {
-    aws      = ">= 2.58, < 4"
-    external = "~> 1.2"
-    null     = "~> 2.1"
+    aws      = ">= 3.5"
+    external = ">= 2.1"
+    null     = ">= 3.1"
   }
 }

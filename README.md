@@ -57,7 +57,7 @@ For example, if optimization is on, someone tried to start an instances, disable
 |------|--------|---------|
 | <a name="module_ec2_instances"></a> [ec2\_instances](#module\_ec2\_instances) | ./modules/instances | n/a |
 | <a name="module_rds_instances"></a> [rds\_instances](#module\_rds\_instances) | ./modules/instances | n/a |
-| <a name="module_ssm_parameters_cost_optimization"></a> [ssm\_parameters\_cost\_optimization](#module\_ssm\_parameters\_cost\_optimization) | git::https://scm.dazzlingwrench.fxinnovation.com/fxinnovation-public/terraform-module-aws-ssm-parameters.git | 2.0.1 |
+| <a name="module_ssm_parameters_cost_optimization"></a> [ssm\_parameters\_cost\_optimization](#module\_ssm\_parameters\_cost\_optimization) | git::https://github.com/FXinnovation/fx-terraform-module-aws-ssm-parameters.git | 2.0.1 |
 
 ## Resources
 

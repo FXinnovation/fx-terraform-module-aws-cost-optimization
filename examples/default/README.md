@@ -29,7 +29,7 @@
 |------|--------|---------|
 | <a name="module_example"></a> [example](#module\_example) | ../.. | n/a |
 | <a name="module_example2"></a> [example2](#module\_example2) | ../.. | n/a |
-| <a name="module_example_instances"></a> [example\_instances](#module\_example\_instances) | git::ssh://git@scm.dazzlingwrench.fxinnovation.com:2222/fxinnovation-public/terraform-module-aws-virtual-machine.git | 8.0.0 |
+| <a name="module_example_instances"></a> [example\_instances](#module\_example\_instances) | git::ssh://git@github.com/FXinnovation/fx-terraform-module-aws-virtual-machine.git | 8.0.0 |
 
 ## Resources
 

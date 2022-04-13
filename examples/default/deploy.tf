@@ -15,7 +15,7 @@ data "aws_ssm_parameter" "ami" {
 }
 
 module "example_instances" {
-  source = "git::ssh://git@github.com/FXinnovation/fx-terraform-module-aws-virtual-machine.git?ref=8.0.0"
+  source = "github.com/FXinnovation/fx-terraform-module-aws-virtual-machine.git?ref=8.0.0"
 
   instance_count = 2
   name           = "${random_string.this.result}tftest"
